@@ -14,14 +14,14 @@ Private Sub Application_Startup()
     ' Connect to MAPI namespace
     Set ns = Application.GetNamespace("MAPI")
     
-    ' Connect to the shared mailbox CGO MGS
+    ' Connect to the shared mailbox EXAMPLE
     On Error Resume Next
-    Set sharedMailbox = ns.Folders.Item("CGO MGS")
+    Set sharedMailbox = ns.Folders.Item("EXAMPLE")
     On Error GoTo 0
 
     ' Check if the shared mailbox exists
     If sharedMailbox Is Nothing Then
-        MsgBox "Could not access the shared mailbox CGO MGS.", vbExclamation, "Error"
+        MsgBox "Could not access the shared mailbox EXAMPLE.", vbExclamation, "Error"
         Exit Sub
     End If
     
@@ -49,13 +49,13 @@ Private Sub myInbox_ItemAdd(ByVal Item As Object)
         ' Debug message: The item is a MailItem
         MsgBox "The item is a MailItem.", vbInformation, "Debug"
 
-        ' Check if the email is from "comunicacionesti@mgs.es"
-        If Item.SenderEmailAddress = "comunicacionesti@mgs.es" Then
+        ' Check if the email is from "kaiiMRT@example.com"
+        If Item.SenderEmailAddress = "kaiiMRT@example.com" Then
             ' Show a notification
             MsgBox "New email from comunicacionesti@mgs.es in the Room Alerts folder!", vbInformation, "New Email Notification"
         Else
-            ' Debug message: The email is not from comunicacionesti@mgs.es
-            MsgBox "The email is not from comunicacionesti@mgs.es.", vbInformation, "Debug"
+            ' Debug message: The email is not from kaiiMRT@example.com
+            MsgBox "The email is not from kaiiMRT@example.com.", vbInformation, "Debug"
         End If
     Else
         ' Debug message: The item is not a MailItem
